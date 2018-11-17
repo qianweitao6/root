@@ -1,0 +1,5 @@
+<div class="form-group">
+  <label for="{{ name }}">{{ label }}</label>
+  <input class="form-control {{ hasErrorFor(name) ? 'is-invalid' : '' }}" type="{{ type || 'text' }}" name="{{ name }}" placeholder="{{ placeholder }}" value="{{ old(name, value) }}">
+  {{ elIf('<div class="invalid-feedback">$self</div>', getErrorFor(name), hasErrorFor(name)) }}
+</div>

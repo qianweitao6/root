@@ -1,0 +1,55 @@
+@layout('layouts.cdview')
+
+@section('content')
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="card my-5">
+          <div class="card-body">
+            <h1 class="my-5 display-4">添加设备</h1>
+            <form action="{{ route('DeviceController.store') }}" method="POST">
+              @!component('components.form.input', {
+                name: 'devicename',
+                label: '设备名',
+                placeholder: 'Pick a devicename',
+                getErrorFor,
+                hasErrorFor,
+                old
+              })
+              @!component('components.form.select', {
+                name: 'scene_id',
+                title: '选择场景',
+                items: scenes,
+                value: 'id',
+                label: 'scenename'
+              })
+              @!component('components.form.select', {
+                name: 'dtype_id',
+                title: '选择类型',
+                items: dtypes,
+                value: 'id',
+                label: 'title'
+              })
+              @!component('components.form.textarea', {
+                name: 'detail',
+                label: '详细描述',
+                placeholder: 'Write something for this device',
+                rows: 3,
+                getErrorFor,
+                hasErrorFor,
+                old
+              })
+              @each(scene in scenes)
+              @if(scene.selected)
+              <input type="hidden" value="true" name="selected">
+              @endif
+              @endeach
+              {{ csrfField() }}
+              <button class="btn btn-primary btn-block my-4" type="submit">提交</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection

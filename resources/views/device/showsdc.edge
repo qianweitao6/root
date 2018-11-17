@@ -1,0 +1,113 @@
+@layout('layouts.sdc')
+
+@section('content')
+  <div class="modal fade" id="alertModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">注意</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          确定要删除该设备吗？
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="delete" data-csrf="{{ csrfToken }}" data-id="{{ device.id }}">确定</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="connectAlert" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">注意</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          抱歉，没能联系上服务器~
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+          <button type="button" class="btn btn-primary">尝试重连</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card my-4">
+          <div class="card-body">
+            <div class="btn-toolbar float-right">
+              <div class="btn-group">
+                <a class="btn btn-outline-info" href="{{ route('DeviceController.edit', { id: device.id }) }}">修改</a>
+                <button class="btn btn-outline-info" type="button" data-toggle="modal" data-target="#alertModal">删除</button>
+                <a class="btn btn-outline-info" href="{{ route('UserController.scene', { id: device.scene.id }) }}">退出</a>
+              </div>
+            </div>
+            <h1 class="my-4 display-4">{{ device.devicename }}</h1>
+            <p class="card-text">
+              <small class="text-muted">{{ device.scene.scenename }}—{{ device.detail }}</small>
+            </p>
+          </div>
+          <div class="card-body">
+            <ul class="nav nav-tabs" id="myTab">
+              <li class="nav-item">
+                <a href="#join" class="nav-link active" data-toggle="tab" id="join-tab">接入</a>
+              </li>
+              <li class="nav-item">
+                <a href="#monitor" class="nav-link" data-toggle="tab" id="monitor-tab">实时数据</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="join">
+                <div class="container my-3">
+                  <details>
+                    <summary>关于连接</summary>
+                    <p>
+                      <h5><small class="text-muted">请连接该主机：</small></h5>
+                      <h4><small class="text-muted"><span class="font-italic">120.79.215.184:1883</span></small></h4>
+                      <h5><small class="text-muted">请发布该主题：</small></h5>
+                      <h4><small class="text-muted"><span class="font-italic">users/{{ auth.user.id }}/devices/{{ device.id }}</span></small></h4>
+                      <h5><small class="text-muted">定义此消息格式，type替换为传感器类型，value是传感器数据：</small></h5>
+                      <h4><small class="text-muted"><span class="font-italic">{ "type" :  value}</span></small></h4>
+                      <h5><small class="text-muted">为了保证服务质量，发布时间间隔大于3S</small></h5>
+                      <h5><small class="text-muted">时间跨度更长的数据趋势，请将发布间隔调整为1minute以上</small></h5>
+                    </p>
+                  </details>
+                  <details>
+                    <summary>关于设备</summary>
+                    <p>
+                      <h5><small class="text-muted">如果你还不知道怎么开始，推荐使用GitHub MQTT库，适合ESP8266、Arduino...</small></h5>
+                      <h4><small class="text-muted"><a href="https://github.com/knolleary/pubsubclient"><i class="fab fa-github"></i></a><span class="font-italic"> https://github.com/knolleary/pubsubclient</span></small></h4>
+                      <h5><small class="text-muted">使用案例：</small></h5>
+                    </p>
+                  </details>
+                  <details>
+                    <summary>传感器类型</summary>
+                    <p>
+                      <h5><small class="text-muted">温度</small></h5>
+                      <h5><small class="text-muted">湿度</small></h5>
+                      <h5><small class="text-muted">粉尘烟雾</small></h5>
+                      <h5><small class="text-muted">一氧化碳</small></h5>
+                    </p>
+                  </details>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="monitor">
+                <div style="display: none;" id="sensorData" data-user_id="{{ auth.user.id }}" data-device_id="{{ device.id }}" data-dtype_title="{{ device.dtype.title }}"></div>
+                <div id="main" style="width: 700px;height:400px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection

@@ -1,0 +1,40 @@
+@layout('layouts.edview')
+
+@section('content')
+  <div class="modal fade" id="alertModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">注意</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          删除场景及其所有设备，确保全部设备已经转移
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="delete" data-csrf="{{ csrfToken }}" data-id="{{ scene.id }}">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h3 class="mt-5 mb-4">编辑场景</h3>
+    <form action="/scenes/{{ scene.id }}?_method=PUT" method="POST">
+      @!component('components.form.input', {
+        name: 'scenename',
+        label: '场景名',
+        value: scene.scenename
+      })
+      @!component('components.form.textarea', {
+        name: 'detail',
+        label: '详细描述',
+        value: scene.detail
+      })
+      {{ csrfField() }}
+      <button class="btn btn-primary" type="submit">提交</button>
+    </form>
+  </div>
+@endsection

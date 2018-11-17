@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light border-bottom">
+  @loggedIn
+  <a href="{{ route('UserController.show', { id: auth.user.id }) }}" class="navbar-brand">
+    <img src="data:image/svg+xml;base64,CjxzdmcgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDEwMDAgMTAwMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTAwMCAxMDAwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPG1ldGFkYXRhPiDnn6Lph4/lm77moIfkuIvovb0gOiBodHRwOi8vd3d3LnNmb250LmNuLyA8L21ldGFkYXRhPjxnPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLDUxMS4wMDAwMDApIHNjYWxlKDAuMTAwMDAwLC0wLjEwMDAwMCkiPjxwYXRoIGQ9Ik01Nzc2LjEsMzgyOC44Yy04NDMuMy00Ny4xLTE0NjktMzc0LjYtMTgwNi4zLTk0NS4zbC05Ni4xLTE2MC44bC0xMDUuOSw0NS4xYy0zNDcuMSwxNTMtODA4LDE0My4yLTExNDUuNC0yNS41Yy01NTctMjgwLjUtOTM1LjUtOTAwLjItOTM1LjUtMTUzMS43di0xNzIuNmwtMTIxLjYtNDcuMUM5MzMuOCw3NTMuNSw0MDguMSwxNjUuMiwyMDYuMS01MzEuMUMyMy43LTExNTguNyw3Ni43LTE3OTQuMSwzNjMtMjM3NC43QzY0OS40LTI5NTMuMiwxMTI2LTMzNjksMTcxOC4zLTM1NTUuM2wxNzQuNS01NC45bDI4NTcuNi01LjljMjgyOC4xLTMuOSwyODYxLjUtMy45LDMwNTkuNiwzNS4zYzg3Mi44LDE3OC41LDE2MDIuNCw4NTMuMiwxOTI2LDE3ODAuOGMzODQuNCwxMTA4LjEsNzguNCwyMzc3LjEtNzU5LDMxNTMuN2MtMTQ3LjEsMTM1LjMtNDE1LjgsMzIzLjYtNTY0LjgsMzk2LjJsLTg4LjMsNDMuMWwtMjMuNSwxNzQuNmMtMTMxLjQsOTg2LjUtODEzLjksMTY3NC45LTE4MTguMSwxODMzLjhDNjIzNSwzODM4LjYsNjA3NC4yLDM4NDYuNCw1Nzc2LjEsMzgyOC44eiBNNjQ4NC4xLDM0ODkuNUM3MjUxLDMzNTguMSw3NzU3LDI5MTQuOCw3OTMzLjUsMjIxNC43YzI3LjUtMTA1LjksNTQuOS0yNjguNyw2MC44LTM2MC45YzE1LjctMjQ5LjEsMjcuNS0yNjguNywxOTguMS0zNDcuMWM0NjIuOC0yMDkuOCw4NzQuNy02MTAsMTEwOC4xLTEwNzYuN2M5Ni4xLTE4OC4zLDE4NC4zLTQ0NS4yLDIzNS40LTY4Mi41YzU2LjktMjY4LjcsNjIuOC04MTcuOSw5LjgtMTA4Mi42Yy0xMzMuNC02NjQuOS00NjQuOC0xMjE0LTk1NS4xLTE1ODAuOGMtMTQ3LjEtMTA5LjgtNTA0LTI3OC41LTcwNi4xLTMzNS40bC0xNjYuNy00NS4xSDQ4MjQuOWMtMzI0OS44LDAtMjk2Ny40LTExLjgtMzMxMi42LDE0OS4xYy01MzUuNCwyNDkuMS05MTAsNzUzLjEtMTA1My4yLDE0MTAuMWMtNTEsMjMxLjQtNTEsNzI3LjYsMCw5NjFDNjIzLjktOS40LDExMzkuNyw1NjcuMiwxODE2LjMsNzQzLjdjMTg2LjMsNDcuMSwxODYuMyw0OSwxOTIuMiw0MjMuNmM1LjksMzY2LjcsMjUuNSw0NjQuOCwxNTMsNzE5LjhjOTQuMSwxOTAuMiwyOTAuMyw0MTEuOSw0NTEuMSw1MDkuOWMzNzQuNiwyMjUuNSw4MjkuNiwyMjUuNSwxMTkyLjQsMmMxMTMuNy03MC42LDE5Ni4xLTgwLjQsMjUxLTI5LjRjMjEuNiwxNy43LDYwLjgsOTQuMSw5MC4yLDE2OC43YzE5MC4yLDQ4Mi41LDYwMi4xLDgwNC4xLDExODIuNiw5MTkuOGMyNTYuOSw1MywyODAuNCw1NC45LDY1NS4xLDU2LjlDNjE5OS43LDM1MTYuOSw2MzcwLjQsMzUwOS4xLDY0ODQuMSwzNDg5LjV6Ij48L3BhdGg+PC9nPjwvZz48L3N2Zz4gIA==" width="32" height="32">
+    Smart home
+  </a>
+  @else
+  <a href="{{ route('/') }}" class="navbar-brand">
+    <img src="data:image/svg+xml;base64,CjxzdmcgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDEwMDAgMTAwMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTAwMCAxMDAwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPG1ldGFkYXRhPiDnn6Lph4/lm77moIfkuIvovb0gOiBodHRwOi8vd3d3LnNmb250LmNuLyA8L21ldGFkYXRhPjxnPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLDUxMS4wMDAwMDApIHNjYWxlKDAuMTAwMDAwLC0wLjEwMDAwMCkiPjxwYXRoIGQ9Ik01Nzc2LjEsMzgyOC44Yy04NDMuMy00Ny4xLTE0NjktMzc0LjYtMTgwNi4zLTk0NS4zbC05Ni4xLTE2MC44bC0xMDUuOSw0NS4xYy0zNDcuMSwxNTMtODA4LDE0My4yLTExNDUuNC0yNS41Yy01NTctMjgwLjUtOTM1LjUtOTAwLjItOTM1LjUtMTUzMS43di0xNzIuNmwtMTIxLjYtNDcuMUM5MzMuOCw3NTMuNSw0MDguMSwxNjUuMiwyMDYuMS01MzEuMUMyMy43LTExNTguNyw3Ni43LTE3OTQuMSwzNjMtMjM3NC43QzY0OS40LTI5NTMuMiwxMTI2LTMzNjksMTcxOC4zLTM1NTUuM2wxNzQuNS01NC45bDI4NTcuNi01LjljMjgyOC4xLTMuOSwyODYxLjUtMy45LDMwNTkuNiwzNS4zYzg3Mi44LDE3OC41LDE2MDIuNCw4NTMuMiwxOTI2LDE3ODAuOGMzODQuNCwxMTA4LjEsNzguNCwyMzc3LjEtNzU5LDMxNTMuN2MtMTQ3LjEsMTM1LjMtNDE1LjgsMzIzLjYtNTY0LjgsMzk2LjJsLTg4LjMsNDMuMWwtMjMuNSwxNzQuNmMtMTMxLjQsOTg2LjUtODEzLjksMTY3NC45LTE4MTguMSwxODMzLjhDNjIzNSwzODM4LjYsNjA3NC4yLDM4NDYuNCw1Nzc2LjEsMzgyOC44eiBNNjQ4NC4xLDM0ODkuNUM3MjUxLDMzNTguMSw3NzU3LDI5MTQuOCw3OTMzLjUsMjIxNC43YzI3LjUtMTA1LjksNTQuOS0yNjguNyw2MC44LTM2MC45YzE1LjctMjQ5LjEsMjcuNS0yNjguNywxOTguMS0zNDcuMWM0NjIuOC0yMDkuOCw4NzQuNy02MTAsMTEwOC4xLTEwNzYuN2M5Ni4xLTE4OC4zLDE4NC4zLTQ0NS4yLDIzNS40LTY4Mi41YzU2LjktMjY4LjcsNjIuOC04MTcuOSw5LjgtMTA4Mi42Yy0xMzMuNC02NjQuOS00NjQuOC0xMjE0LTk1NS4xLTE1ODAuOGMtMTQ3LjEtMTA5LjgtNTA0LTI3OC41LTcwNi4xLTMzNS40bC0xNjYuNy00NS4xSDQ4MjQuOWMtMzI0OS44LDAtMjk2Ny40LTExLjgtMzMxMi42LDE0OS4xYy01MzUuNCwyNDkuMS05MTAsNzUzLjEtMTA1My4yLDE0MTAuMWMtNTEsMjMxLjQtNTEsNzI3LjYsMCw5NjFDNjIzLjktOS40LDExMzkuNyw1NjcuMiwxODE2LjMsNzQzLjdjMTg2LjMsNDcuMSwxODYuMyw0OSwxOTIuMiw0MjMuNmM1LjksMzY2LjcsMjUuNSw0NjQuOCwxNTMsNzE5LjhjOTQuMSwxOTAuMiwyOTAuMyw0MTEuOSw0NTEuMSw1MDkuOWMzNzQuNiwyMjUuNSw4MjkuNiwyMjUuNSwxMTkyLjQsMmMxMTMuNy03MC42LDE5Ni4xLTgwLjQsMjUxLTI5LjRjMjEuNiwxNy43LDYwLjgsOTQuMSw5MC4yLDE2OC43YzE5MC4yLDQ4Mi41LDYwMi4xLDgwNC4xLDExODIuNiw5MTkuOGMyNTYuOSw1MywyODAuNCw1NC45LDY1NS4xLDU2LjlDNjE5OS43LDM1MTYuOSw2MzcwLjQsMzUwOS4xLDY0ODQuMSwzNDg5LjV6Ij48L3BhdGg+PC9nPjwvZz48L3N2Zz4gIA==" width="32" height="32">
+    Smart home
+  </a>
+  @endloggedIn
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item btn-group">
+        <a href="{{ route('DeviceController.show', { id: device.id }) }}" class="btn btn-outline-secondary"><i class="fas fa-reply"></i></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user"></i>
+          {{ auth.user.username }}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">个人资料</a>
+          <div class="dropdown-divider"></div>
+          <form action="{{ route('logout') }}" method="POST">
+            {{ csrfField() }}
+            <button class="dropdown-item" type="submit">退出登录</button>
+          </form>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="btn text-muted">
+          <i class="fas fa-plus"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

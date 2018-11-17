@@ -1,0 +1,35 @@
+@layout('layouts.cdview')
+
+@section('content')
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="card my-5">
+          <div class="card-body">
+            <h1 class="my-5 display-4">创建场景</h1>
+            <form action="{{ route('SceneController.store') }}" method="POST">
+              @!component('components.form.input', {
+                name: 'scenename',
+                label: '场景名',
+                placeholder: 'Pick a scenename',
+                getErrorFor,
+                hasErrorFor,
+                old
+              })
+              @!component('components.form.textarea', {
+                name: 'detail',
+                label: '详细描述',
+                placeholder: 'Write something for this scene',
+                getErrorFor,
+                hasErrorFor,
+                old
+              })
+              {{ csrfField() }}
+              <button class="btn btn-primary btn-block my-4" type="submit">提交</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection

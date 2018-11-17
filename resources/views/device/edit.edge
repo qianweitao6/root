@@ -1,0 +1,44 @@
+@layout('layouts.device-edit')
+
+@section('content')
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="card my-5">
+          <div class="card-body">
+            <h1 class="my-4 display-4">编辑设备</h1>
+            <form action="/devices/{{ device.id }}?_method=PUT" method="POST">
+              @!component('components.form.input', {
+                name: 'devicename',
+                label: '设备名',
+                value: device.devicename
+              })
+              @!component('components.form.select', {
+                name: 'scene_id',
+                title: '选择场景',
+                items: scenes,
+                value: 'id',
+                label: 'scenename'
+              })
+              @!component('components.form.select', {
+                name: 'dtype_id',
+                title: '选择类型',
+                items: dtypes,
+                value: 'id',
+                label: 'title'
+              })
+              @!component('components.form.textarea', {
+                name: 'detail',
+                label: '详细描述',
+                value: device.detail,
+                rows: 3
+              })
+              {{ csrfField() }}
+              <button class="btn btn-primary btn-block my-4" type="submit">提交</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection

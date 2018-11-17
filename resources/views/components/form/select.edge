@@ -1,0 +1,8 @@
+<div class="form-group">
+  <label for="{{ name }}">{{ title }}</label>
+  <select class="form-control" name="{{ name }}">
+    @each(item in items)
+    <option value="{{ item[value] }}" {{ item.selected ? 'selected' : '' }}>{{ item[label] }}</option>
+    @endeach
+  </select>
+</div>

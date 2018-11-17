@@ -1,0 +1,45 @@
+@layout('layouts.main')
+
+@section('content')
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="card my-5">
+          <div class="card-body">
+            <h1 class="my-5 display-4">注册</h1>
+            <form action="{{ route('UserController.store') }}" method="POST">
+              @!component('components.form.input', {
+                name: 'username',
+                label: '用户名',
+                placeholder: 'Pick your username',
+                getErrorFor,
+                hasErrorFor,
+                old
+              })
+              @!component('components.form.input', {
+                name: 'email',
+                type: 'email',
+                label: '邮箱',
+                placeholder: 'you@example.com',
+                getErrorFor,
+                hasErrorFor,
+                old
+              })
+              @!component('components.form.input', {
+                name: 'password',
+                type: 'password',
+                label: '密码',
+                placeholder: 'Create a password',
+                getErrorFor,
+                hasErrorFor,
+                old
+              })
+              {{ csrfField() }}
+              <button class="btn btn-primary btn-block my-4" type="submit">创建</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection

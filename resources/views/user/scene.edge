@@ -1,0 +1,136 @@
+@layout('layouts.main')
+
+@section('content')
+<div class="mt-3 mr-3">
+  <div class="row">
+    <div class="col-2 border-right">
+      <div class="list-group w-100" id="accordion">
+        <a href="#collapse-1" class="list-group-item list-group-item-action list-group-item-primary" data-toggle="collapse">电控制类</a>
+          <div class="collapse show" id="collapse-1" data-parent="#accordion">
+            <div class="list-group text-center">
+              <a data-toggle="list" href="#smartLamp" class="list-group-item list-group-item-action">智能灯</a>
+              <a data-toggle="list" href="#powerStrip" class="list-group-item list-group-item-action">智能插排</a>
+              <a data-toggle="list" href="#smartSwitch" class="list-group-item list-group-item-action">智能开关</a>
+              <a data-toggle="list" href="#smartCurtain" class="list-group-item list-group-item-action">智能窗帘</a>
+            </div>
+          </div>
+        <a href="#collapse-2" class="list-group-item list-group-item-action list-group-item-success" data-toggle="collapse">传感器数据</a>
+          <div class="collapse" id="collapse-2" data-parent="#accordion">
+            <div class="list-group text-center">
+              <a data-toggle="list" href="#temperature" class="list-group-item list-group-item-action">温度</a>
+              <a data-toggle="list" href="#humidity" class="list-group-item list-group-item-action">湿度</a>
+              <a data-toggle="list" href="#smoke" class="list-group-item list-group-item-action">粉尘烟雾</a>
+              <a data-toggle="list" href="#co" class="list-group-item list-group-item-action">一氧化碳</a>
+            </div>
+          </div>
+        <a href="#collapse-3" class="list-group-item list-group-item-action list-group-item-warning" data-toggle="collapse">好友分享</a>
+          <div class="collapse" id="collapse-3" data-parent="#accordion">
+            <div class="list-group text-center">
+              <a data-toggle="list" href="#" class="list-group-item list-group-item-action">Hello!</a>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-10">
+      <div class="tab-content">
+        <div class="tab-pane fade show" id="smartLamp">
+          <div class="row">
+            @each(device in devices)
+              @if(device.dtype.id == 1)
+                @!component('components.device.pcc', {
+                  item: device,
+                  name: 'devicename'
+                })
+              @endif
+            @endeach
+          </div>
+        </div>
+        <div class="tab-pane fade" id="powerStrip">
+          <div class="row">
+            @each(device in devices)
+              @if(device.dtype.id == 2)
+                @!component('components.device.pcc', {
+                  item: device,
+                  name: 'devicename'
+                })
+              @endif
+            @endeach
+          </div>
+        </div>
+        <div class="tab-pane fade" id="smartSwitch">
+          <div class="row">
+            @each(device in devices)
+              @if(device.dtype.id == 3)
+                @!component('components.device.pcc', {
+                  item: device,
+                  name: 'devicename'
+                })
+              @endif
+            @endeach
+          </div>
+        </div>
+        <div class="tab-pane fade" id="smartCurtain">
+          <div class="row">
+            @each(device in devices)
+              @if(device.dtype.id == 4)
+                @!component('components.device.pcc', {
+                  item: device,
+                  name: 'devicename'
+                })
+              @endif
+            @endeach
+          </div>
+        </div>
+        <div class="tab-pane fade" id="temperature">
+          <div class="row">
+            @each(device in devices)
+              @if(device.dtype.id == 5)
+                @!component('components.device.sdc', {
+                  item: device,
+                  name: 'devicename'
+                })
+              @endif
+            @endeach
+          </div>
+        </div>
+        <div class="tab-pane fade" id="humidity">
+          <div class="row">
+            @each(device in devices)
+              @if(device.dtype.id == 6)
+                @!component('components.device.sdc', {
+                  item: device,
+                  name: 'devicename'
+                })
+              @endif
+            @endeach
+          </div>
+        </div>
+        <div class="tab-pane fade" id="smoke">
+          <div class="row">
+            @each(device in devices)
+              @if(device.dtype.id == 7)
+                @!component('components.device.sdc', {
+                  item: device,
+                  name: 'devicename'
+                })
+              @endif
+            @endeach
+          </div>
+        </div>
+        <div class="tab-pane fade" id="co">
+          <div class="row">
+            @each(device in devices)
+              @if(device.dtype.id == 8)
+                @!component('components.device.sdc', {
+                  item: device,
+                  name: 'devicename'
+                })
+              @endif
+            @endeach
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection

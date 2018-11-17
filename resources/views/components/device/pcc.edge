@@ -1,0 +1,9 @@
+<div class="col-sm-3 mb-2">
+  <div class="card">
+    <div class="card-header">{{ item[name] }}</div>
+    <div class="card-body text-secondary">
+      <h5 class="card-title">当前状态：{{ item.status == 'off' ? '关闭' : '开启' }}</h5>
+      <a href="{{ route('DeviceController.show', { id: item.id }) }}" class="btn btn-primary">进入</a>
+    </div>
+  </div>
+</div>
